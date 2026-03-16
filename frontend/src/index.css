@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* Base Reset & Variables */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body, #root {
+    width: 100%;
+    height: 100vh;
+    font-family: 'Outfit', sans-serif;
+    overflow: hidden;
+}
+
+/* Background Application Gradient (Matches the image) */
+body {
+    background: linear-gradient(180deg, #6fdca5 0%, #a4e1ae 35%, #f1dc9c 80%, #ffde99 100%);
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 10;
+}
+
+/* ── Custom Navbar ── */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    color: #1a583e;
+    z-index: 50;
+}
+.brand {
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    flex-grow: 1;
+    text-align: center;
+}
+.hamburger-menu {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.hamburger-menu span {
+    display: block;
+    width: 32px;
+    height: 3px;
+    background-color: #f8f9fa;
+    margin: 4px 0;
+    border-radius: 999px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+.hamburger-menu span.short {
+    width: 22px;
+}
+
+/* ── Typography & Centering ── */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5rem;
+    position: relative;
+    z-index: 20;
+}
+
+.headline {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.05em;
+    margin-bottom: 2.5rem;
+}
+
+/* ── Upload Area (Search Bar Look) ── */
+.upload-container {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    z-index: 30;
+}
+
+.search-bar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.25);
+    border: 3px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px; /* Pill shape */
+    padding: 0.75rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.search-bar:hover {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+.placeholder {
+    font-size: 1.4rem;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+.search-icon {
+    width: 32px;
+    height: 32px;
+    stroke: #ffffff;
+}
+
+/* ── Image Preview & Results Card ── */
+.preview-card {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(15px);
+    border-radius: 24px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.5s ease;
+}
+
+.preview-image {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.5rem;
+    border: 3px solid white;
+}
+
+.analyze-btn {
+    background: #ffde99;
+    color: #1a583e;
+    border: none;
+    border-radius: 999px;
+    padding: 1rem 3rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    box-shadow: 0 8px 20px rgba(255, 222, 153, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+.analyze-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 222, 153, 0.6);
+}
+
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.spinner {
+    width: 40px; height: 40px;
+    border: 4px solid rgba(255,255,255,0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.result-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    margin-top: 1rem;
+}
+.result-box h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.result-box.healthy h2 { color: #10b981; }
+.result-box.disease h2 { color: #ef4444; }
+.disease-name {
+    font-size: 1.2rem;
+    color: #4b5563;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 1.5rem;
+}
+
+.reset-btn {
+    background: #e5e7eb;
+    color: #4b5563;
+    border: none;
+    border-radius: 999px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+.reset-btn:hover { background: #d1d5db; }
+
+/* ── 3D Waving Plants Animations (The magic) ── */
+.nature-layer {
+    position: absolute;
+    bottom: -10vh; /* Shift down slightly */
+    left: 0;
+    width: 100vw;
+    height: 70vh;
+    pointer-events: none;
+    z-index: 10; /* Important: Place naturally under the main content visually */
+    overflow: visible;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+}
+
+/* We style SVGs directly inside the layer */
+.nature-layer svg {
+    position: absolute;
+    bottom: 0px;
+}
+
+.main-svg {
+    width: 100%;
+    height: 100%;
+    left: 0;
+}
+
+.side-svg {
+    height: 100%;
+    bottom: 5vh;
+}
+.left-svg { left: -5vw; }
+.right-svg { right: -5vw; }
+
+/* Waving keyframes for 3D realism */
+@keyframes breeze-back {
+    0%, 100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1); }
+    50% { transform: rotateX(10deg) rotateY(5deg) rotateZ(2deg) scale(1.02); }
+}
+@keyframes breeze-mid {
+    0%, 100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    33% { transform: rotateX(-5deg) rotateY(-8deg) rotateZ(-3deg); }
+    66% { transform: rotateX(5deg) rotateY(3deg) rotateZ(2deg); }
+}
+@keyframes breeze-front {
+    0%, 100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    50% { transform: rotateX(15deg) rotateY(-10deg) rotateZ(-1deg); }
+}
+
+/* Apply animations to groupings within the SVG */
+.layer-back {
+    transform-origin: bottom center;
+    animation: breeze-back 12s infinite ease-in-out;
+}
+.layer-mid {
+    transform-origin: bottom center;
+    animation: breeze-mid 9s infinite ease-in-out;
+}
+.layer-front {
+    transform-origin: bottom center;
+    animation: breeze-front 7s infinite ease-in-out;
+}
+.layer-tulip {
+    transform-origin: bottom center;
+    animation: breeze-mid 8s infinite ease-in-out alternate-reverse;
+}
+.layer-sidebar {
+    transform-origin: center center;
+    animation: breeze-back 15s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

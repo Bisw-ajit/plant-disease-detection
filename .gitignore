@@ -1,0 +1,40 @@
+# Virtual Environments
+venv/
+app/venv/
+antigravity_venv/
+env/
+.env
+.venv*
+.venv_311/
+
+# Node
+node_modules/
+frontend/node_modules/
+npm-debug.log
+.npm/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Large Files & Models
+*.h5
+*.keras
+*.zip
+*.tar.gz
+*.pth
+app/trained_model/*.h5
+app/trained_model/*.zip
+app/models/*.h5
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
