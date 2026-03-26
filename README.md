@@ -1,5 +1,7 @@
 # Plant Disease Detection (PlantCare SaaS)
 
+**Live Demo:** [https://plant-disease-detection-liart-two.vercel.app](https://plant-disease-detection-liart-two.vercel.app)
+
 An AI-powered web application for early detection and identification of plant diseases from leaf images. The platform combines a FastAPI-based backend machine learning engine with a responsive, modern React frontend.
 
 ## Features
